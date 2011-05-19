@@ -83,7 +83,7 @@ task :kit => [:clean, :find_dups] do
 end
 
 desc "Get latest rakefile from github"
-task :upgrade_rakefile do
+task :selfupdate do
   url = 'https://github.com/bigkm/KitRake/raw/master/Rakefile'
   file = open url
   content = file.read

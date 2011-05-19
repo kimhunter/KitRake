@@ -11,6 +11,8 @@ Features include
 * **bump** - Increment the least significant version numerer
 * **find\_dups_** - Look for duplicate filenames as these will not work as a kit package
 * **publish** - Local publish with dependencies of kitspec and kit
+* **selfupdate* - Get latest rakefile from github
+
 
 
 ----
