@@ -17,6 +17,7 @@ require 'rubygems'
 require 'rake/clean'
 require 'fileutils'
 require 'yaml'
+require "open-uri"
 
 SRC_FOLDER = "src"
 EXCLUDE_PATTERNS = /(Reachability\.[hm])/
@@ -79,4 +80,15 @@ task :kit => [:clean, :find_dups] do
     FileUtils.cp orig_file, "#{SRC_FOLDER}/#{File.basename(orig_file)}"
   end
   puts "Copied #{SOURCE_FILES.size} files"
+end
+
+desc "Get latest rakefile from github"
+task :upgrade_rakefile do
+  url = 'https://github.com/bigkm/KitRake/raw/master/Rakefile'
+  file = open url
+  content = file.read
+  f = File.open __FILE__, 'w'
+  f.write content
+  f.close
+  puts 'RakeFile Updated'
 end
