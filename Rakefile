@@ -59,9 +59,9 @@ task :bump  do
   kitspec = YAML::load_file 'KitSpec'
   old = kitspec['version']
   kitspec['version'] = inc_revision(old)
-  f = File.open('KitSpec', 'w')
-  f.write kitspec.to_yaml
-  f.close
+  File.open('KitSpec', 'w') {|f| f.write kitspec.to_yaml }
+  kitspec = YAML::load_file 'KitSpec'
+  File.open('KitSpec', 'w') {|f| f.write kitspec.to_yaml }
   puts "Updated from #{old} -> #{kitspec['version']}"
 end
 
